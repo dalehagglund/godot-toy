@@ -1,4 +1,11 @@
 [gd_scene format=3 uid="uid://g1627c1t2tjn"]
 
-[node name="Root" type="Node2D" unique_id=331579103]
-position = Vector2(0, 3)
+[ext_resource type="Texture2D" uid="uid://ct6s08x8t1y5j" path="res://resources/icon.svg" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dcn0s2k1vbfnp" path="res://src/sprite_2d.gd" id="2_0wfyh"]
+
+[node name="Main" type="Node2D" unique_id=331579103]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=126841939]
+position = Vector2(577, 333)
+texture = ExtResource("1_o5qli")
+script = ExtResource("2_0wfyh")
