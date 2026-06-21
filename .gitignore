@@ -3,7 +3,10 @@
 /android/
 /addons/
 /.editorconfig
+
+# files i think godot will correctly regenerate
 *.svg.import
+*.gd.uid
 
 # emacs tmp files of various sorts
 \#*#
