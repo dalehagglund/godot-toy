@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+/addons/
+/.editorconfig
+*.svg.import
+
+# emacs tmp files of various sorts
+\#*#
+*~
