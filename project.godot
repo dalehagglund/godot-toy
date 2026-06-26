@@ -13,7 +13,7 @@ config_version=5
 config/name="Toys"
 run/main_scene="uid://g1627c1t2tjn"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="uid://bmwxx5tekdgso"
+config/icon="uid://ct6s08x8t1y5j"
 
 [display]
 
