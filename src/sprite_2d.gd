@@ -7,6 +7,9 @@ func _init():
 	print("Hello there, world!")
 	print("ZERO", Vector2.ZERO * 10)
 
+func _ready():
+	print("ready: viewport rect size: ", get_viewport_rect())
+	
 func pressed(key: String):
 	return Input.is_action_pressed(key)
 
@@ -15,13 +18,29 @@ func rotation_direction():
 	if pressed("ui_right"): return +1
 	return 0
 
-func velocity_vector():
+func unit_velocity():
 	if not pressed("ui_up"): return Vector2.ZERO
 	return Vector2.UP 
 
 func _process(delta):
 	var dir = rotation_direction()
-	var vel = velocity_vector().rotated(rotation) * speed
+	var unit_vel = unit_velocity()
 
-	rotation += dir * angular_velocity * delta
-	position += vel * delta
+	if dir == 0 and unit_vel == Vector2.ZERO:
+		return
+	
+	var size = get_viewport_rect().size
+
+	if dir != 0:
+		rotation += dir * angular_velocity * delta
+	elif unit_vel != Vector2.ZERO:
+		var velocity = unit_vel.rotated(rotation) * speed
+		position += velocity * delta
+
+		if position.x <= 0 or position.x >= size.x:
+			velocity.x = -velocity.x
+		if position.y <= 0 or position.y >= size.y:
+			velocity.y = -velocity.y
+
+		rotation = velocity.angle() + PI/2 # needed, but not sure why...
+
