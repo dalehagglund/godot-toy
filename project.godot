@@ -18,7 +18,6 @@ config/icon="uid://ct6s08x8t1y5j"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor]
 
