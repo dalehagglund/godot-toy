@@ -22,6 +22,17 @@ func unit_velocity():
 	if not pressed("ui_up"): return Vector2.ZERO
 	return Vector2.UP 
 
+func bounce(position, velocity, size):
+	var vx = velocity.x
+	var vy = velocity.y
+
+	if position.x <= 0 or position.x >= size.x:
+		vx = -vx
+	if position.y <= 0 or position.y >= size.y:
+		vy = -vy
+
+	return Vector2(vx, vy)
+
 func _process(delta):
 	var dir = rotation_direction()
 	var unit_vel = unit_velocity()
@@ -36,11 +47,5 @@ func _process(delta):
 	elif unit_vel != Vector2.ZERO:
 		var velocity = unit_vel.rotated(rotation) * speed
 		position += velocity * delta
-
-		if position.x <= 0 or position.x >= size.x:
-			velocity.x = -velocity.x
-		if position.y <= 0 or position.y >= size.y:
-			velocity.y = -velocity.y
-
+		velocity = bounce(position, velocity, size)
 		rotation = velocity.angle() + PI/2 # needed, but not sure why...
-
